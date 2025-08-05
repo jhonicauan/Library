@@ -2,33 +2,35 @@ package com.jhonicauan.Library.Model;
 
 import java.util.UUID;
 
+import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name = "tb_authors")
+@Table(name = "tb_books")
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
-public class AuthorModel {
-    
+@AllArgsConstructor
+@NoArgsConstructor
+public class BookModel {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID idAuthor;
+    private UUID idBook;
 
-    private String name;
-    private String country;
-    private Integer birthYear = 0;
+    private String title;
 
-    public AuthorModel(String name,String country,Integer birthYear){
-        this.name = name;
-        this.country = country;
-        this.birthYear = birthYear;
-    }
+    private String sinopse;
+
+    private Integer releaseYear = 0;
+
+    @ManyToOne
+    @JoinColumn(name = "idAuthor")
+    private AuthorModel author;
 }

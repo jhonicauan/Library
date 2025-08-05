@@ -22,10 +22,6 @@ public class AuthorService {
 
     public ResponseAuthor addAuthor(RequestAuthor requestAuthor){
         System.out.println(requestAuthor.birthYear());
-        if(requestAuthor.birthYear() <= 0){
-            throw new RuntimeException("O ano de nascimento deve ser positivo");
-        }
-
         return authorMapper.toDto(authorRepository.save(authorMapper.toEntity(requestAuthor)));
     }
 
