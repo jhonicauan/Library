@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: "LibrarySystem"
+  datasource:
+    username: "userExample"
+    password: "passwordExample"
+    url: "jdbc:h2:mem:libraryDatabase"
