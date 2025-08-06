@@ -3,6 +3,7 @@ package com.jhonicauan.Library.Controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,5 +30,10 @@ public class BookController {
     @GetMapping
     public List<ResponseBook> getBooks(){
         return bookService.getBooks();
+    }
+
+    @GetMapping("/author/{name}")
+    public List<ResponseBook> getBooksByAuthor(@PathVariable String name){
+        return bookService.getBooksByAuthor(name);
     }
 }
